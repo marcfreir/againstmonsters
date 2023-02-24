@@ -35,11 +35,11 @@ func _process(delta):
 	translate(Vector2(1,0) * SPEED * direction * delta)
 	
 	#Set the boundaries/limit for the player (in the x axis)
-	if get_global_position().x < 16:
-		set_global_position(Vector2(16, get_global_position().y))
+	if get_global_position().x < 8:
+		set_global_position(Vector2(8, get_global_position().y))
 		
-	if get_global_position().x > 180:
-		set_global_position(Vector2(180, get_global_position().y))
+	if get_global_position().x > 172:
+		set_global_position(Vector2(172, get_global_position().y))
 		
 	if power and not previousPower and get_tree().get_nodes_in_group("playerPower").size() < 100:
 		#Create the power releasing
