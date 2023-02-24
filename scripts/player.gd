@@ -17,6 +17,7 @@ func _process(delta):
 	
 	direction = 0
 	
+	#Make the player move to the right or to the left
 	right = Input.is_action_pressed("ui_right")
 	left = Input.is_action_pressed("ui_left")
 	
