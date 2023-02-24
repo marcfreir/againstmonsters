@@ -48,5 +48,3 @@ func _process(delta):
 		release.set_global_position(get_global_position())
 		
 	previousPower = power
-		
-	print(power)
