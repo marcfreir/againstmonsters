@@ -17,7 +17,7 @@ func _process(delta):
 	
 	direction = 0
 	
-	#Make the player move to the right or to the left
+	#Make the player move to the right or to the left using the right and left key
 	right = Input.is_action_pressed("ui_right")
 	left = Input.is_action_pressed("ui_left")
 	
@@ -28,3 +28,9 @@ func _process(delta):
 		direction -= 1
 	
 	translate(Vector2(1,0) * SPEED * direction * delta)
+	
+	#Set the boundaries/limit for the player (in the x axis)
+	if get_global_position().x < 16:
+		set_global_position(Vector2(16, get_global_position().y))
+	if get_global_position().x > 180:
+		set_global_position(Vector2(180, get_global_position().y))
