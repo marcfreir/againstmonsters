@@ -6,6 +6,8 @@ var right
 var left
 
 var direction
+var previousRelease = preload("res://scenes/playerPower.tscn")
+var previousPower = false
 
 var power
 
@@ -35,7 +37,16 @@ func _process(delta):
 	#Set the boundaries/limit for the player (in the x axis)
 	if get_global_position().x < 16:
 		set_global_position(Vector2(16, get_global_position().y))
+		
 	if get_global_position().x > 180:
 		set_global_position(Vector2(180, get_global_position().y))
+		
+	if power and not previousPower and get_tree().get_nodes_in_group("playerPower").size() < 100:
+		#Create the power releasing
+		var release = previousRelease.instance()
+		get_parent().add_child(release)
+		release.set_global_position(get_global_position())
+		
+	previousPower = power
 		
 	print(power)
