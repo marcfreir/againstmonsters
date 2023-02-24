@@ -5,7 +5,9 @@ const SPEED = 80
 var right
 var left
 
-var direction = 0
+var direction
+
+var power
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +22,7 @@ func _process(delta):
 	#Make the player move to the right or to the left using the right and left key
 	right = Input.is_action_pressed("ui_right")
 	left = Input.is_action_pressed("ui_left")
+	power = Input.is_action_pressed("power_release")
 	
 	if right:
 		direction += 1
@@ -34,3 +37,5 @@ func _process(delta):
 		set_global_position(Vector2(16, get_global_position().y))
 	if get_global_position().x > 180:
 		set_global_position(Vector2(180, get_global_position().y))
+		
+	print(power)
