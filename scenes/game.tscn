@@ -23,3 +23,7 @@ type = 0
 
 [node name="monster2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 50, 23 )
+
+[node name="monster3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 78, 23 )
+type = 2

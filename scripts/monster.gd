@@ -1,6 +1,8 @@
+tool
+
 extends Area2D
 
-export(int, "A", "B", "C") var type = 0
+export(int, "A", "B", "C") var type = 0 setget set_type
 
 var score = 0
 
@@ -26,6 +28,15 @@ func _ready():
 	get_node("monsterSprite").set_texture(attribute.monsterSprite)
 	score = attribute.score
 
+func _draw():
+	var attribute = attributes[type]
+	get_node("monsterSprite").set_texture(attribute.monsterSprite)
+	score = attribute.score
+	
+func set_type(value):
+	type = value
+	if is_inside_tree() and Engine.editor_hint:
+		update()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
