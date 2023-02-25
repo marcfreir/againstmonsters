@@ -8,6 +8,8 @@ radius = 1.0
 height = 4.0
 
 [node name="playerPower" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="PowerSheet" type="Sprite" parent="."]
