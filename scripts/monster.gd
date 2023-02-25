@@ -38,6 +38,8 @@ func set_type(value):
 	if is_inside_tree() and Engine.editor_hint:
 		update()
 
+func destroy(object):
+	queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

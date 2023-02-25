@@ -19,3 +19,12 @@ func _process(delta):
 	if get_global_position().y < 0:
 		#Free the memory after the object has been released
 		queue_free()
+
+#Destroy monster
+func destroy(object):
+	queue_free()
+	
+func _on_playerPower_area_entered(area):
+	if area.has_method("destroy"):
+		area.destroy(self)
+		destroy(self)
