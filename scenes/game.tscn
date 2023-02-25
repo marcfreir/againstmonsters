@@ -17,13 +17,109 @@ hframes = 3
 [node name="playerCollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
 polygon = PoolVector2Array( -8, -3, -6, -3, -6, -4, -5, -4, -5, 0, -3, 0, -3, -2, -1, -2, -1, -4, 0, -4, 0, -2, 2, -2, 2, 0, 4, 0, 4, -4, 5, -4, 5, -3, 7, -3, 7, -2, 6, -2, 6, 1, 5, 1, 5, 2, 3, 2, 3, 3, 0, 3, 0, 2, -1, 2, -1, 3, -4, 3, -4, 2, -6, 2, -6, 1, -7, 1, -7, -2, -8, -2 )
 
-[node name="monster" parent="." instance=ExtResource( 3 )]
-position = Vector2( 21, 23 )
+[node name="monsterGroupNode2D" type="Node2D" parent="."]
+
+[node name="monster" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 16, 12 )
 type = 0
 
-[node name="monster2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 50, 23 )
+[node name="monster2" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 32, 12 )
+type = 0
 
-[node name="monster3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 78, 23 )
+[node name="monster3" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 48, 12 )
+type = 0
+
+[node name="monster4" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 64, 12 )
+type = 0
+
+[node name="monster5" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 80, 12 )
+type = 0
+
+[node name="monster6" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 96, 12 )
+type = 0
+
+[node name="monster7" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 112, 12 )
+type = 0
+
+[node name="monster8" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 16, 24 )
+
+[node name="monster9" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 32, 24 )
+
+[node name="monster10" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 48, 24 )
+
+[node name="monster11" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 64, 24 )
+
+[node name="monster12" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 80, 24 )
+
+[node name="monster13" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 96, 24 )
+
+[node name="monster14" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 112, 24 )
+
+[node name="monster15" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 16, 36 )
+type = 2
+
+[node name="monster16" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 32, 36 )
+type = 2
+
+[node name="monster17" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 48, 36 )
+type = 2
+
+[node name="monster18" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 64, 36 )
+type = 2
+
+[node name="monster19" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 80, 36 )
+type = 2
+
+[node name="monster20" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 96, 36 )
+type = 2
+
+[node name="monster21" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 112, 36 )
+type = 2
+
+[node name="monster22" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 16, 48 )
+type = 2
+
+[node name="monster23" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 32, 48 )
+type = 2
+
+[node name="monster24" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 48, 48 )
+type = 2
+
+[node name="monster25" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 64, 48 )
+type = 2
+
+[node name="monster26" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 80, 48 )
+type = 2
+
+[node name="monster27" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 96, 48 )
+type = 2
+
+[node name="monster28" parent="monsterGroupNode2D" instance=ExtResource( 3 )]
+position = Vector2( 112, 48 )
 type = 2
