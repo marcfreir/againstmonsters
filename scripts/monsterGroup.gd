@@ -2,6 +2,10 @@ extends Node2D
 
 var previousMonsterPowerRelease = preload("res://scenes/monsterPower.tscn")
 
+var direction = 1
+
+const SPEED = Vector2(6, 0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("powerReleaseTimer").start()
@@ -21,3 +25,22 @@ func power_release():
 func _on_powerReleaseTimer_timeout():
 	get_node("powerReleaseTimer").set_wait_time(rand_range(.5, 3))
 	power_release()
+
+
+func _on_monsterGroupMoveTimer_timeout():
+	
+	var border = false
+	
+	for monster in get_node("monsters").get_children():
+		#monster.next_frame()
+		if monster.get_global_position().x > 170 and direction > 0:
+			direction = -1
+			border = true
+		if monster.get_global_position().x < 12 and direction < 0:
+			direction = 1
+			border = true
+			
+	if border:
+		translate(Vector2(0, 8))
+	else:
+		translate(SPEED * direction)

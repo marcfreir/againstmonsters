@@ -131,4 +131,8 @@ type = 2
 
 [node name="powerReleaseTimer" type="Timer" parent="monsterGroup"]
 
+[node name="monsterGroupMoveTimer" type="Timer" parent="monsterGroup"]
+autostart = true
+
 [connection signal="timeout" from="monsterGroup/powerReleaseTimer" to="monsterGroup" method="_on_powerReleaseTimer_timeout"]
+[connection signal="timeout" from="monsterGroup/monsterGroupMoveTimer" to="monsterGroup" method="_on_monsterGroupMoveTimer_timeout"]
