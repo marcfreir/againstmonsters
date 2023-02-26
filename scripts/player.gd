@@ -5,11 +5,16 @@ const SPEED = 80
 var right
 var left
 
-var direction
+var direction = 0
 var previousRelease = preload("res://scenes/playerPower.tscn")
 var previousPower = false
 
 var power
+
+var isAlive = true
+
+signal dead
+signal respawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,3 +53,18 @@ func _process(delta):
 		release.set_global_position(get_global_position())
 		
 	previousPower = power
+
+# Destroy the player
+func destroy(object):
+	if isAlive:
+		isAlive = false
+		set_process(false)
+		emit_signal("dead")
+		get_node("playerAnimationPlayer").play("defaultPlayerIsDead")
+		yield(get_node("playerAnimationPlayer"), "animation_finished")
+		emit_signal("respawn")
+		set_process(true)
+		isAlive = true
+		get_node("playerSprite").set_frame(0)
+		
+		

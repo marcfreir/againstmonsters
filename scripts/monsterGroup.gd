@@ -74,3 +74,14 @@ func restart_motherShipTimer():
 	get_node("motherShipTimer").set_wait_time(rand_range(6, 12))
 	#...restart the motherShipTimer
 	get_node("motherShipTimer").start()
+
+func stop_all():
+	get_node("motherShipTimer").stop()
+	get_node("powerReleaseTimer").stop()
+	get_node("monsterGroupMoveTimer").stop()
+
+func start_all():
+	get_node("motherShipTimer").start()
+	get_node("powerReleaseTimer").start()
+	get_node("monsterGroupMoveTimer").start()
+
