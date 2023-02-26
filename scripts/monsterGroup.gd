@@ -43,5 +43,7 @@ func _on_monsterGroupMoveTimer_timeout():
 			
 	if border:
 		translate(Vector2(0, 8))
+		if get_node("monsterGroupMoveTimer").get_wait_time() > .3:
+			get_node("monsterGroupMoveTimer").set_wait_time(get_node("monsterGroupMoveTimer").get_wait_time() - .05)
 	else:
 		translate(SPEED * direction)
