@@ -32,7 +32,8 @@ func _on_monsterGroupMoveTimer_timeout():
 	var border = false
 	
 	for monster in get_node("monsters").get_children():
-		#monster.next_frame()
+		#Change the monster frame from the function next_frame() in the monster script
+		monster.next_frame()
 		if monster.get_global_position().x > 170 and direction > 0:
 			direction = -1
 			border = true
