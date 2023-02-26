@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/player_sheet_new.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/monster.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/monsterGroup.gd" type="Script" id=4]
+[ext_resource path="res://scenes/barrier.tscn" type="PackedScene" id=5]
 
 [node name="game" type="Node"]
 
@@ -133,6 +134,21 @@ type = 2
 
 [node name="monsterGroupMoveTimer" type="Timer" parent="monsterGroup"]
 autostart = true
+
+[node name="barriers" type="Node2D" parent="."]
+position = Vector2( 138, 240 )
+
+[node name="barrier" parent="barriers" instance=ExtResource( 5 )]
+position = Vector2( -99, 0 )
+
+[node name="barrier2" parent="barriers" instance=ExtResource( 5 )]
+position = Vector2( -65, 0 )
+
+[node name="barrier3" parent="barriers" instance=ExtResource( 5 )]
+position = Vector2( -31, 0 )
+
+[node name="barrier4" parent="barriers" instance=ExtResource( 5 )]
+position = Vector2( 3, 0 )
 
 [connection signal="timeout" from="monsterGroup/powerReleaseTimer" to="monsterGroup" method="_on_powerReleaseTimer_timeout"]
 [connection signal="timeout" from="monsterGroup/monsterGroupMoveTimer" to="monsterGroup" method="_on_monsterGroupMoveTimer_timeout"]
