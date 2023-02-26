@@ -4,6 +4,7 @@ const SPEED = Vector2(6, 0)
 
 var previousMonsterPowerRelease = preload("res://scenes/monsterPower.tscn")
 var previousMonsterExplosion = preload("res://scenes/monsterExplosion.tscn")
+var previousMotherShip = preload("res://scenes/motherShip.tscn")
 
 var direction = 1
 
@@ -13,6 +14,7 @@ signal monster_down(object)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("powerReleaseTimer").start()
+	restart_motherShipTimer()
 	for monster in get_node("monsters").get_children():
 		monster.connect("animation_destroyed", self, "on_monster_destroyed")
 
@@ -59,3 +61,16 @@ func on_monster_destroyed(monster):
 	var monsterExplosion = previousMonsterExplosion.instance()
 	get_parent().add_child(monsterExplosion)
 	monsterExplosion.set_global_position(monster.get_global_position())
+
+
+func _on_motherShipTimer_timeout():
+	var motherShip = previousMotherShip.instance()
+	motherShip.connect("animation_destroyed", self, "on_monster_destroyed")
+	get_parent().add_child(motherShip)
+	restart_motherShipTimer()
+
+func restart_motherShipTimer():
+	#Get the motherShipTimer and change the time rondomly (from 6 to 12 sec), then...
+	get_node("motherShipTimer").set_wait_time(rand_range(6, 12))
+	#...restart the motherShipTimer
+	get_node("motherShipTimer").start()

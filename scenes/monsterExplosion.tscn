@@ -4,6 +4,7 @@
 [ext_resource path="res://scripts/monsterExplosion.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
+resource_name = "defaultMonsterExplosion"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("monsterExplosionSprite:frame")
@@ -42,5 +43,5 @@ texture = ExtResource( 1 )
 hframes = 5
 
 [node name="monsterExplosionAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 1 )
+anims/defaultMonsterExplosion = SubResource( 1 )
 anims/monsterExplosion = SubResource( 2 )
