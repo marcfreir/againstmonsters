@@ -7,6 +7,9 @@ export(int, "A", "B", "C") var type = 0 setget set_type
 var score = 0
 var frame = 0
 
+#Signal for the destroyed monster
+signal animation_destroyed(object)
+
 # List of all types of monsters
 var attributes = [
 	{
@@ -40,6 +43,8 @@ func set_type(value):
 		update()
 
 func destroy(object):
+	#Indicates the monster was destroyed
+	emit_signal("animation_destroyed", self)
 	queue_free()
 	
 # Animate monsters sprites
