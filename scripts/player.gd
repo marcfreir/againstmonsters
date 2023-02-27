@@ -59,6 +59,11 @@ func start():
 	show()
 	set_process(true)
 
+func disable():
+	hide()
+	set_process(false)
+	isAlive = false
+
 # Destroy the player
 func destroy(object):
 	if isAlive:

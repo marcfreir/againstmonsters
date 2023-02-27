@@ -10,6 +10,7 @@ var direction = 1
 
 signal monster_down(object)
 signal monster_ready
+signal area_conquered
 
 
 # Called when the node enters the scene tree for the first time.
@@ -58,6 +59,8 @@ func _on_monsterGroupMoveTimer_timeout():
 		if monster.get_global_position().x < 12 and direction < 0:
 			direction = 1
 			border = true
+		if monster.get_global_position().y > 260:
+			emit_signal("area_conquered")
 			
 	if border:
 		translate(Vector2(0, 8))
