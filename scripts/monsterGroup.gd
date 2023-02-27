@@ -9,14 +9,24 @@ var previousMotherShip = preload("res://scenes/motherShip.tscn")
 var direction = 1
 
 signal monster_down(object)
+signal monster_ready
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("powerReleaseTimer").start()
+	#get_node("powerReleaseTimer").start()
 	restart_motherShipTimer()
 	for monster in get_node("monsters").get_children():
+		monster.hide()
 		monster.connect("animation_destroyed", self, "on_monster_destroyed")
+		
+	for monster in get_node("monsters").get_children():
+		get_node("pauseMonsterTimer").start()
+		yield(get_node("pauseMonsterTimer"), "timeout")
+		monster.show()
+	
+	emit_signal("monster_ready")
+	start_all()
 
 
 func power_release():

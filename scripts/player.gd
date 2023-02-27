@@ -18,7 +18,8 @@ signal respawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_process(true)
+	hide()
+	#set_process(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,6 +54,10 @@ func _process(delta):
 		release.set_global_position(get_global_position())
 		
 	previousPower = power
+
+func start():
+	show()
+	set_process(true)
 
 # Destroy the player
 func destroy(object):

@@ -9,6 +9,7 @@ func _ready():
 	randomize()
 	update_score()
 	get_node("monsterGroup").connect("monster_down", self, "on_monsterGroup_monster_down")
+	get_node("monsterGroup").connect("monster_ready", self, "on_monsterGroup_monster_ready")
 	get_node("player").connect("dead", self, "on_player_dead")
 	get_node("player").connect("respawn", self, "on_player_respawn")
 
@@ -17,6 +18,9 @@ func on_monsterGroup_monster_down(monster):
 	score += monster.score
 	update_score()
 
+func on_monsterGroup_monster_ready():
+	get_node("player").start()
+	
 #Make the score be written on the HUD
 func update_score():
 	get_node("HUD/scoreLabel").set_text(str(score))

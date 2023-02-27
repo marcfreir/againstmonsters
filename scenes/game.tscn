@@ -178,9 +178,12 @@ type = 2
 [node name="powerReleaseTimer" type="Timer" parent="monsterGroup"]
 
 [node name="monsterGroupMoveTimer" type="Timer" parent="monsterGroup"]
-autostart = true
 
 [node name="motherShipTimer" type="Timer" parent="monsterGroup"]
+one_shot = true
+
+[node name="pauseMonsterTimer" type="Timer" parent="monsterGroup"]
+wait_time = 0.05
 one_shot = true
 
 [node name="barriers" type="Node2D" parent="."]
