@@ -3,6 +3,7 @@ extends Area2D
 var barrierHit = 0
 
 func destroy(object):
+	$barrierHitAudioStreamPlayer.play()
 	barrierHit += 1
 	if barrierHit >= 5:
 		queue_free()

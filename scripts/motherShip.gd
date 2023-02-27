@@ -7,6 +7,7 @@ signal animation_destroyed(object)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$motherShipAudioStreamPlayer.play()
 	get_node("runMotherShipAnimationPlayer").play("runMotherShip")
 	yield(get_node("runMotherShipAnimationPlayer"), "animation_finished")
 	queue_free()

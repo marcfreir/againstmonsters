@@ -38,6 +38,9 @@ func power_release():
 		var monsterPowerRelease = previousMonsterPowerRelease.instance()
 		get_parent().add_child(monsterPowerRelease)
 		monsterPowerRelease.set_global_position(monster.get_global_position())
+		$monsterPowerReleaseAudioStreamPlayer.play()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -49,6 +52,8 @@ func _on_powerReleaseTimer_timeout():
 
 
 func _on_monsterGroupMoveTimer_timeout():
+	
+	$monstersRunAudioStreamPlayer.play()
 	
 	var border = false
 	
@@ -72,6 +77,7 @@ func _on_monsterGroupMoveTimer_timeout():
 		translate(SPEED * direction)
 
 func on_monster_destroyed(monster):
+	$monsterExplosionAudioStreamPlayer.play()
 	emit_signal("monster_down", monster)
 	var monsterExplosion = previousMonsterExplosion.instance()
 	get_parent().add_child(monsterExplosion)

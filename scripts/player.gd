@@ -48,6 +48,7 @@ func _process(delta):
 		set_global_position(Vector2(172, get_global_position().y))
 		
 	if power and not previousPower and get_tree().get_nodes_in_group("playerPower").size() < 100:
+		$playerPowerReleaseAudioStreamPlayer.play()
 		#Create the power releasing
 		var release = previousRelease.instance()
 		get_parent().add_child(release)
@@ -67,6 +68,7 @@ func disable():
 # Destroy the player
 func destroy(object):
 	if isAlive:
+		$playerExplosionAudioStreamPlayer.play()
 		isAlive = false
 		set_process(false)
 		emit_signal("dead")
