@@ -2,6 +2,8 @@ extends Node
 
 var score = 0
 
+var lives = 3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -22,6 +24,9 @@ func update_score():
 
 func on_player_dead():
 	get_node("monsterGroup").stop_all()
+	#Take lives of the player when it dies
+	lives -= 1
+	get_node("HUD/showLife").playerLives = lives
 
 func on_player_respawn():
 	get_node("monsterGroup").start_all()
