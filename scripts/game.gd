@@ -31,6 +31,7 @@ func on_player_dead():
 	#Take lives of the player when it dies
 	lives -= 1
 	get_node("HUD/showLife").playerLives = lives
+	get_tree().call_group("MONSTER_POWER", "destroy", self)
 
 func on_player_respawn():
 	get_node("monsterGroup").start_all()
