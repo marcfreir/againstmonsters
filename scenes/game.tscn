@@ -201,6 +201,7 @@ one_shot = true
 
 [node name="monstersRunAudioStreamPlayer" type="AudioStreamPlayer" parent="monsterGroup"]
 stream = ExtResource( 10 )
+volume_db = -5.0
 bus = "fx"
 
 [node name="monsterExplosionAudioStreamPlayer" type="AudioStreamPlayer" parent="monsterGroup"]

@@ -50,7 +50,7 @@ func _on_powerReleaseTimer_timeout():
 	get_node("powerReleaseTimer").set_wait_time(rand_range(.5, 3))
 	power_release()
 
-
+var soundNote = 0
 func _on_monsterGroupMoveTimer_timeout():
 	
 	$monstersRunAudioStreamPlayer.play()

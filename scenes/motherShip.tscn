@@ -93,5 +93,4 @@ anims/runMotherShip = SubResource( 4 )
 [node name="motherShipAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -5.0
-autoplay = true
 bus = "fx"
