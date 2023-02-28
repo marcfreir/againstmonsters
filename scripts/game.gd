@@ -3,13 +3,11 @@ extends Node
 const EXTRA_LIFE_POINTS = [100, 150, 200]
 
 var extraLifeIndex = 0
-
-
 var score = 0
-
 var lives = 3
 
 signal game_over
+signal victory
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +27,7 @@ func on_monsterGroup_monster_down(monster):
 	#The player get more lives
 	if extraLifeIndex < EXTRA_LIFE_POINTS.size() and score >= EXTRA_LIFE_POINTS[extraLifeIndex]:
 		lives += 1
-		get_node("HUD/showLife").playerLives = lives
+		update_lives()
 		extraLifeIndex += 1
 	update_score()
 
@@ -41,12 +39,20 @@ func on_monsterGroup_area_conquered():
 
 #Give victory to the player
 func on_monsterGroup_victory():
-	print("victory")
+	get_node("monsterGroup").stop_all()
+	get_node("player").disable()
+	emit_signal("victory")
 
 #Make the score be written on the HUD
 func update_score():
 	get_node("HUD/scoreLabel").set_text(str(score))
 	
+func update_lives():
+	get_node("HUD/showLife").playerLives = lives
+
+func update_HUD():
+	update_score()
+	update_lives()
 
 func on_player_dead():
 	get_node("monsterGroup").stop_all()
