@@ -5,7 +5,7 @@ const SPEED = 80
 var right
 var left
 
-var direction = 0
+var direction
 var previousRelease = preload("res://scenes/playerPower.tscn")
 var previousPower = false
 

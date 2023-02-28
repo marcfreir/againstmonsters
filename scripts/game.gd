@@ -1,10 +1,13 @@
 extends Node
 
-const EXTRA_LIFE_POINTS = [100, 150, 200]
+const EXTRA_LIFE_POINTS = [1000, 5000, 10000, 50000]
 
-var extraLifeIndex = 0
-var score = 0
-var lives = 3
+#Struct
+var gameData = {
+	extraLifeIndex = 0,
+	score = 0,
+	lives = 3
+} setget set_gameData
 
 signal game_over
 signal victory
@@ -22,13 +25,13 @@ func _ready():
 
 
 func on_monsterGroup_monster_down(monster):
-	score += monster.score
+	gameData.score += monster.score
 	
 	#The player get more lives
-	if extraLifeIndex < EXTRA_LIFE_POINTS.size() and score >= EXTRA_LIFE_POINTS[extraLifeIndex]:
-		lives += 1
+	if gameData.extraLifeIndex < EXTRA_LIFE_POINTS.size() and gameData.score >= EXTRA_LIFE_POINTS[gameData.extraLifeIndex]:
+		gameData.lives += 1
 		update_lives()
-		extraLifeIndex += 1
+		gameData.extraLifeIndex += 1
 	update_score()
 
 func on_monsterGroup_monster_ready():
@@ -45,10 +48,10 @@ func on_monsterGroup_victory():
 
 #Make the score be written on the HUD
 func update_score():
-	get_node("HUD/scoreLabel").set_text(str(score))
+	get_node("HUD/scoreLabel").set_text(str(gameData.score))
 	
 func update_lives():
-	get_node("HUD/showLife").playerLives = lives
+	get_node("HUD/showLife").playerLives = gameData.lives
 
 func update_HUD():
 	update_score()
@@ -57,13 +60,13 @@ func update_HUD():
 func on_player_dead():
 	get_node("monsterGroup").stop_all()
 	#Take lives of the player when it dies
-	lives -= 1
-	get_node("HUD/showLife").playerLives = lives
+	gameData.lives -= 1
+	update_lives()
 	get_tree().call_group("MONSTER_POWER", "destroy", self)
 
 func on_player_respawn():
 	#Check if player lives is less than or equal to 0 to to call game over 
-	if lives <= 0:
+	if gameData.lives <= 0:
 		game_over()
 	else:
 		get_node("monsterGroup").start_all()
@@ -75,3 +78,7 @@ func game_over():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func set_gameData(value):
+	gameData = value
+	update_HUD()

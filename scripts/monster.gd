@@ -6,6 +6,7 @@ export(int, "A", "B", "C") var type = 0 setget set_type
 
 var score = 0
 var frame = 0
+var monsterSprite
 
 #Signal for the destroyed monster
 signal animation_destroyed(object)
