@@ -1,6 +1,6 @@
 extends Node
 
-
+var previousNameSelector = preload("res://scenes/nameSelector.tscn")
 var previousGame = preload("res://scenes/game.tscn")
 var game
 
@@ -17,6 +17,7 @@ var highScoresList = [
 	{name = "JJJ", score = 100}
 ]
 
+var storeHighScore
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,11 +50,19 @@ func _on_playButton_pressed():
 	new_game()
 
 func on_game_over():
-	
+	storeHighScore = null
 	for highScore in highScoresList:
 		if game.gameData.score > highScore.score:
-			print(highScore)
+			storeHighScore = highScore
 			break
+	
+	if storeHighScore != null:
+		var nameSelector = previousNameSelector.instance()
+		add_child(nameSelector)
+		nameSelector.connect("finished", self, "on_nameSelector_finished")
+		yield(nameSelector, "finished")
+		print("finished")
+		nameSelector.queue_free()
 	
 	get_node("newGamePlayButton").show()
 
@@ -62,4 +71,11 @@ func on_victory():
 	new_game()
 	game.gameData = gameData
 	
+func on_nameSelector_finished(playerNameValue):
+	print(highScoresList)
+	print(playerNameValue)
+	var highScoresIndex = highScoresList.find(storeHighScore)
+	highScoresList.insert(highScoresIndex, {name = playerNameValue, score = game.gameData.score})
+	highScoresList.resize(10)
+	print(highScoresList)
 
