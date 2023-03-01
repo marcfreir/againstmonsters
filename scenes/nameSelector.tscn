@@ -44,8 +44,8 @@ text = "A"
 align = 1
 valign = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="nameTimer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="nameTimer" to="." method="_on_Timer_timeout"]
